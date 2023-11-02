@@ -88,7 +88,26 @@ paths:
                 type: object
                 items:
                   $ref: '#/components/schemas/Author'
-  #TODO2: complete GET (can be filtered by name) - PUT - DELETE
+    delete:
+      summary: Remove an author
+      description: Remove an author by the body request
+      operationId: removeAuthor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/Author'
+      responses:
+        200:
+          description: return the removed author data
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Author'
 components:
   schemas:
     Author:
