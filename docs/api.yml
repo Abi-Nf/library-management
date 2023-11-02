@@ -8,6 +8,8 @@ servers:
 paths:
   /books:
     get:
+      tags:
+        - Books
       summary: Get all books
       description: The returned books are ordered by updated datetime.
       operationId: getBooks
@@ -18,21 +20,20 @@ paths:
           required: false
           schema:
             type: string
-        - in: header
+        - in: query
           name: startInterval
           description: the date start interval that will filter the response
           required: false
           schema:
             type: string
             format: date
-        - in: header
+        - in: query
           name: endInterval
           description: the end date of interval that will filter the response
           required: false
           schema:
             type: string
             format: date
-        #TODO3: add parameter to filter books by intervals of dates of the releaseDate
       responses:
         200:
           description: The list of filtered books
@@ -43,6 +44,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Book'
     put:
+      tags:
+        - Books
       summary: Create or update a list of books
       operationId: Create or update Books
       requestBody:
@@ -63,6 +66,8 @@ paths:
                   $ref: '#/components/schemas/Book'
   /authors:
     get:
+      tags:
+        - Authors
       summary: Get all filtered authors
       description: get all authors filtered by given name
       operationId: getFilteredAuthors
@@ -83,6 +88,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Author'
     put:
+      tags:
+        - Authors
       summary: create or modify an author
       description: It almost looks for the id to find if there is already on and modify else create
       operationId: updateAuthor
@@ -101,6 +108,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Author'
     delete:
+      tags:
+        - Authors
       summary: Remove an author
       description: Remove an author by the body request
       operationId: removeAuthor
