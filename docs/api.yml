@@ -51,6 +51,19 @@ paths:
   #TODO2: complete GET (can be filtered by name) - PUT - DELETE
 components:
   schemas:
+    Author:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        gender:
+          type: string
+          enum:
+            - Male
+            - Female
     Book:
       type: object
       properties:
@@ -59,8 +72,7 @@ components:
         bookName:
           type: string
         author:
-          #TODO1: set it as a component with properties : id, name, sex (M or F)
-          type: string
+          $ref: '#/components/schemas/Author'
         pageNumbers:
           type: integer
         topic:
