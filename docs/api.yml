@@ -68,6 +68,26 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Author'
+    put:
+      summary: create or modify an author
+      description: It almost looks for the id to find if there is already on and modify else create
+      operationId: updateAuthor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/Author'
+      responses:
+        200:
+          description: return the modified author
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Author'
   #TODO2: complete GET (can be filtered by name) - PUT - DELETE
 components:
   schemas:
