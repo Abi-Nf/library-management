@@ -130,6 +130,23 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Author'
+  /authors/{id}:
+    delete:
+      summary: delete an author by its ID
+      operationId: DeleteAuthorById
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: return the deleted author
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
 components:
   schemas:
     Author:
