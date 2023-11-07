@@ -7,3 +7,9 @@
 
 => On utilise que les identifiants car ce sont les seuls éléments nécéssaire
    pour modifier l'autheur d'un livre dont les deux identifiants éxistent déjà
+
+    ii. Dans quel cas, UpdateBookAuthor devrait avoir les propriétés 
+    de CrupdateBook et de Author ?
+
+=> On pourrait  envisager de mettre ces propriétés dans les réponses de la requête
+
