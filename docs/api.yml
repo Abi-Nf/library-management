@@ -153,8 +153,7 @@ components:
       type: object
       properties:
         id:
-          type: string
-          format: uuid
+          type: integer
         name:
           type: string
         gender:
