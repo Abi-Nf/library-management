@@ -130,7 +130,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Book'
-  /authors:
+  /authors/{page}/{pageSize}:
     get:
       tags:
         - Authors
@@ -144,6 +144,18 @@ paths:
           required: true
           schema:
             type: string
+        - in: path
+          name: page
+          required: true
+          schema:
+            type: integer
+            default: 1
+        - in: path
+          name: pageSize
+          required: true
+          schema:
+            type: integer
+            default: 50
       responses:
         200:
           description: all filtered authors
