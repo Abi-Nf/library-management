@@ -13,3 +13,9 @@
 
 => On pourrait  envisager de mettre ces propriétés dans les réponses de la requête
 
+3] a] Pourquoi les paginations sont-elles nécessaires ? 
+
+=> Il est important de paginer certaines réponses de requête (les listes)
+pour ne pas saturer le serveur pour une question de liste mais aussi à alléger
+la taille des données une fois arrivé vers un client ou une interface
+
