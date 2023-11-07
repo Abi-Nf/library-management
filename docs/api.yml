@@ -110,7 +110,7 @@ paths:
     delete:
       tags:
         - Authors
-      summary: Remove an author
+      summary: Remove a list of author by their Id
       description: Remove an author by the body request
       operationId: removeAuthor
       requestBody:
@@ -118,15 +118,18 @@ paths:
         content:
           application/json:
             schema:
+              type: array
               items:
-                $ref: '#/components/schemas/Author'
+                type: integer
       responses:
         200:
-          description: return the removed author data
+          description: return a list of the removed authors
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Author'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
 components:
   schemas:
     Author:
