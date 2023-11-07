@@ -54,7 +54,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/CreateUpdateBook'
+                $ref: '#/components/schemas/CrupdateBook'
       responses:
         200:
           description: The list of created or updated books
@@ -215,7 +215,7 @@ components:
           enum:
             - Male
             - Female
-    CreateUpdateBook:
+    CrupdateBook:
       type: object
       properties:
         id:
@@ -236,7 +236,7 @@ components:
     Book:
       type: object
       allOf:
-        - $ref: '#/components/schemas/CreateUpdateBook'
+        - $ref: '#/components/schemas/CrupdateBook'
       properties:
         author:
           $ref: '#/components/schemas/Author'
