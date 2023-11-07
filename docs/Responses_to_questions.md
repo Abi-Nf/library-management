@@ -25,3 +25,9 @@ la taille des données une fois arrivé vers un client ou une interface.
 
 => Etant donnée que les valeurs dans les en-têtes de la requête sont customisables; 
    donc on peut ajouter des propriétés de pagination dans les en-têtes.
+
+    b. Est ce qu’on doit gérer la pagination à travers les entêtes de la requête ?
+    Justifiez votre réponse.
+
+=> Il serait préférable de gérer la pagination à travers les en-têtes pour avoir
+une bonne lisibilitée des requêtes.
