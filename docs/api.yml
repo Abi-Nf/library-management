@@ -37,8 +37,13 @@ paths:
         - $ref: '#/components/parameters/queryPagination'
       responses:
         200:
-          $ref: '#/components/responses/200'
-
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -275,17 +280,6 @@ components:
             type: integer
             default: 50
   responses:
-    200:
-      description: OK
-      content:
-        application/json:
-          schema:
-            allOf:
-              - $ref: '#/components/schemas/StatusMessageOk'
-              - type: object
-                properties:
-                  body:
-                    type: object
     400:
       description: Bad request
       content:
@@ -358,12 +352,3 @@ components:
           type: string
         message:
           type: string
-    StatusMessageOk:
-      type: object
-      properties:
-        type:
-          type: string
-          default: success
-        message:
-          type: string
-          default: OK
