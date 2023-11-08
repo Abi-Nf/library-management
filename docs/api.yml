@@ -34,20 +34,6 @@ paths:
           schema:
             type: string
             format: date
-        - in: query
-          name: page
-          description: The index of the page to get paginated list
-          required: false
-          schema:
-            type: integer
-            default: 1
-        - in: query
-          name: pageSize
-          description: The size of each page to paginate
-          required: false
-          schema:
-            type: integer
-            default: 50
       responses:
         200:
           description: The list of filtered books
@@ -228,6 +214,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/Author'
 components:
+  parameters:
+    queryPagination:
+      in: query
+      name: pagination
+      required: false
+      schema:
+        type: object
+        properties:
+          page:
+            type: integer
+            default: 1
+          pageSize:
+            type: integer
+            default: 50
   schemas:
     Author:
       type: object
