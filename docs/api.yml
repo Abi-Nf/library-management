@@ -228,6 +228,19 @@ components:
           pageSize:
             type: integer
             default: 50
+    pathPagination:
+      in: path
+      name: pagination
+      required: true
+      schema:
+        type: object
+        properties:
+          page:
+            type: integer
+            default: 1
+          pageSize:
+            type: integer
+            default: 50
   schemas:
     Author:
       type: object
