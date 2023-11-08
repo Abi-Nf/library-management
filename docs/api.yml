@@ -34,6 +34,7 @@ paths:
           schema:
             type: string
             format: date
+        - $ref: '#/components/parameters/queryPagination'
       responses:
         200:
           description: The list of filtered books
@@ -130,18 +131,7 @@ paths:
           required: true
           schema:
             type: string
-        - in: path
-          name: page
-          required: true
-          schema:
-            type: integer
-            default: 1
-        - in: path
-          name: pageSize
-          required: true
-          schema:
-            type: integer
-            default: 50
+        - $ref: '#/components/parameters/pathPagination'
       responses:
         200:
           description: all filtered authors
