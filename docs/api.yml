@@ -381,3 +381,14 @@ components:
         properties:
           idAuthor:
             type: integer
+    importAuthors:
+      type: array
+      items:
+        properties:
+          authorName:
+            type: string
+          gender:
+            type: string
+            enum:
+              - M
+              - F
