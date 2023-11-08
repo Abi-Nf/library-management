@@ -143,6 +143,8 @@ paths:
           $ref: '#/components/responses/500'
   /books/import:
     post:
+      tags:
+        - Import
       summary: Import books from Excel or JSON
       operationId: ImportBooks
       requestBody:
@@ -274,6 +276,8 @@ paths:
           $ref: '#/components/responses/500'
   /authors/import:
     post:
+      tags:
+        - Import
       summary: Import authors from Excel or JSON
       operationId: ImportAuthors
       requestBody:
