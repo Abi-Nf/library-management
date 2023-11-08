@@ -34,20 +34,8 @@ paths:
           schema:
             type: string
             format: date
-        - in: query
-          name: page
-          description: The index of the page to get paginated list
-          required: false
-          schema:
-            type: integer
-            default: 1
-        - in: query
-          name: pageSize
-          description: The size of each page to paginate
-          required: false
-          schema:
-            type: integer
-            default: 50
+        - $ref: '#/components/parameters/queryPage'
+        - $ref: '#/components/parameters/queryPageSize'
       responses:
         200:
           description: The list of filtered books
@@ -144,18 +132,8 @@ paths:
           required: true
           schema:
             type: string
-        - in: path
-          name: page
-          required: true
-          schema:
-            type: integer
-            default: 1
-        - in: path
-          name: pageSize
-          required: true
-          schema:
-            type: integer
-            default: 50
+        - $ref: '#/components/parameters/pathPage'
+        - $ref: '#/components/parameters/pathPageSize'
       responses:
         200:
           description: all filtered authors
@@ -228,6 +206,39 @@ paths:
               schema:
                 $ref: '#/components/schemas/Author'
 components:
+  parameters:
+    queryPage:
+      in: query
+      name: page
+      description: The index of the page to get paginated list
+      required: false
+      schema:
+        type: integer
+        default: 1
+    queryPageSize:
+      in: query
+      name: pageSize
+      description: The size of each page to paginate
+      required: false
+      schema:
+        type: integer
+        default: 50
+    pathPage:
+      in: path
+      name: page
+      description: The index of the page to get paginated list
+      required: true
+      schema:
+        type: integer
+        default: 1
+    pathPageSize:
+      in: path
+      name: pageSize
+      description: The size of each page to paginate
+      required: true
+      schema:
+        type: integer
+        default: 50
   schemas:
     Author:
       type: object
