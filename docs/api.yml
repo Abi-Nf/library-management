@@ -44,6 +44,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Book'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
     put:
       tags:
         - Books
@@ -65,6 +71,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Book'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
   /books/{bookId}/authors/{authorId}:
     put:
       tags:
@@ -90,6 +102,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Book'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
   /books/authors:
     put:
       tags:
@@ -117,6 +135,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Book'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
   /authors/{page}/{pageSize}:
     get:
       tags:
@@ -141,6 +165,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Author'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
     put:
       tags:
         - Authors
@@ -161,6 +191,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Author'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
     delete:
       tags:
         - Authors
@@ -184,6 +220,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Author'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
   /authors/{id}:
     delete:
       tags:
@@ -203,6 +245,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Author'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
 components:
   parameters:
     queryPagination:
@@ -231,6 +279,36 @@ components:
           pageSize:
             type: integer
             default: 50
+  responses:
+    200:
+      description: OK
+    400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StatusMessage'
+          example:
+            type: error
+            message: Bad request
+    403:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StatusMessage'
+          example:
+            type: error
+            message: Forbidden
+    500:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StatusMessage'
+          example:
+            type: error
+            message: Internal server error
   schemas:
     Author:
       type: object
@@ -269,3 +347,10 @@ components:
       properties:
         author:
           $ref: '#/components/schemas/Author'
+    StatusMessage:
+      type: object
+      properties:
+        type:
+          type: string
+        message:
+          type: string
