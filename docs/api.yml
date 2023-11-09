@@ -332,6 +332,27 @@ paths:
           $ref: '#/components/responses/403'
         500:
           $ref: '#/components/responses/500'
+  /guest:
+    get:
+      tags:
+        - Guests
+      summary: Get all guests
+      operationId: getGuests
+      responses:
+        200:
+          description: return list of guest
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Guest'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
 components:
   securitySchemes:
     oAuth2Authorizer:
