@@ -170,6 +170,36 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Book'
+  /authors:
+    post:
+      tags:
+        - Authors
+      summary: Remove a list of author by their Id
+      description: Remove an author by the body request
+      operationId: removeAuthor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+      responses:
+        200:
+          description: return a list of the removed authors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
   /authors/{page}/{pageSize}:
     get:
       tags:
@@ -223,35 +253,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Author'
-        400:
-          $ref: '#/components/responses/400'
-        403:
-          $ref: '#/components/responses/403'
-        500:
-          $ref: '#/components/responses/500'
-    delete:
-      tags:
-        - Authors
-      summary: Remove a list of author by their Id
-      description: Remove an author by the body request
-      operationId: removeAuthor
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: integer
-      responses:
-        200:
-          description: return a list of the removed authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Author'
         400:
           $ref: '#/components/responses/400'
         403:
