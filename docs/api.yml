@@ -445,6 +445,36 @@ paths:
           $ref: '#/components/responses/403'
         500:
           $ref: '#/components/responses/500'
+  /books/{idGuest}/returned:
+    get:
+      tags:
+        - Books
+      summary: get guest activities on returned books
+      operationId: Get guest returned book
+      security:
+        - oAuth2Authorizer:
+            - admin
+      parameters:
+        - in: path
+          name: idGuest
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: return all returned books of a specific guest
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
 
   /guest:
     get:
