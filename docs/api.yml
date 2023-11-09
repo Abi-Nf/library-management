@@ -214,7 +214,8 @@ paths:
           required: true
           schema:
             type: string
-        - $ref: '#/components/parameters/pathPagination'
+        - $ref: '#/components/parameters/pathPaginationPage'
+        - $ref: '#/components/parameters/pathPaginationSize'
       responses:
         200:
           description: all filtered authors
@@ -341,19 +342,20 @@ components:
           pageSize:
             type: integer
             default: 50
-    pathPagination:
+    pathPaginationPage:
       in: path
-      name: pagination
+      name: page
       required: true
       schema:
-        type: object
-        properties:
-          page:
-            type: integer
-            default: 1
-          pageSize:
-            type: integer
-            default: 50
+        type: integer
+        default: 1
+    pathPaginationSize:
+      in: path
+      name: pageSize
+      required: true
+      schema:
+        type: integer
+        default: 50
   responses:
     400:
       description: Bad request
