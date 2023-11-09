@@ -240,6 +240,9 @@ paths:
       summary: create or modify an author
       description: It almost looks for the id to find if there is already on and modify else create
       operationId: updateAuthor
+      parameters:
+        - $ref: '#/components/parameters/pathPaginationPage'
+        - $ref: '#/components/parameters/pathPaginationSize'
       requestBody:
         required: true
         content:
