@@ -463,6 +463,17 @@ components:
             enum:
               - M
               - F
+    BorrowBook:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Book'
+      properties:
+        borrow_start:
+          type: string
+          format: 'date-time'
+        should_return:
+          type: string
+          format: 'date-time'
     Guest:
       type: object
       properties:
