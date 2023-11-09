@@ -87,6 +87,9 @@ paths:
         - Authors
       summary: update book's author by their own ID
       operationId: UpdateBookAuthor
+      security:
+        - oAuth2Authorizer:
+            - admin
       parameters:
         - in: path
           name: bookId
@@ -118,6 +121,9 @@ paths:
         - Authors
       summary: update
       operationId: CrupdateBook
+      security:
+        - oAuth2Authorizer:
+            - admin
       requestBody:
         content:
           application/json:
@@ -177,6 +183,9 @@ paths:
       summary: Remove a list of author by their Id
       description: Remove an author by the body request
       operationId: removeAuthor
+      security:
+        - oAuth2Authorizer:
+            - admin
       requestBody:
         required: true
         content:
@@ -269,6 +278,9 @@ paths:
         - Authors
       summary: delete an author by its ID
       operationId: DeleteAuthorById
+      security:
+        - oAuth2Authorizer:
+            - admin
       parameters:
         - in: path
           name: id
