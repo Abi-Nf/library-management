@@ -336,7 +336,7 @@ paths:
   /books/borrow:
     post:
       tags:
-        - Books
+        - Action
       security:
         - oAuth2Authorizer:
             - admin
@@ -366,7 +366,7 @@ paths:
   /books/return:
     post:
       tags:
-        - Books
+        - Action
       security:
         - oAuth2Authorizer:
             - admin
@@ -396,7 +396,7 @@ paths:
   /books/availables:
     get:
       tags:
-        - Books
+        - Action
       summary: get available book to borrow
       operationId: GetAvailableBooks
       responses:
@@ -418,7 +418,7 @@ paths:
   /books/{idGuest}/borrowed:
     get:
       tags:
-        - Books
+        - Action
       summary: get guest activities on borrowing books
       operationId: GetGuestBorrowedBooks
       security:
@@ -448,7 +448,7 @@ paths:
   /books/{idGuest}/returned:
     get:
       tags:
-        - Books
+        - Action
       summary: get guest activities on returned books
       operationId: Get guest returned book
       security:
