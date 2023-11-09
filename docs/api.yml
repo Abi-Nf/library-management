@@ -143,6 +143,9 @@ paths:
           $ref: '#/components/responses/500'
   /books/import:
     post:
+      security:
+        - oAuth2Authorizer:
+            - admin
       tags:
         - Import
       summary: Import books from Excel or JSON
