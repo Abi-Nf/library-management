@@ -463,3 +463,12 @@ components:
             enum:
               - M
               - F
+    Guest:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        reference:
+          type: string
