@@ -276,6 +276,9 @@ paths:
           $ref: '#/components/responses/500'
   /authors/import:
     post:
+      security:
+        - oAuth2Authorizer:
+            - admin
       tags:
         - Import
       summary: Import authors from Excel or JSON
