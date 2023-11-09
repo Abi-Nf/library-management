@@ -298,6 +298,16 @@ paths:
                 items:
                   $ref: '#/components/schemas/Author'
 components:
+  securitySchemes:
+    oAuth2Authorizer:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://library.auth
+          scopes:
+            read_user: read an user
+            write_user: write a new user
+            admin: access to admin resources
   parameters:
     queryPagination:
       in: query
