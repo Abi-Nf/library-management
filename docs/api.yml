@@ -51,6 +51,9 @@ paths:
         500:
           $ref: '#/components/responses/500'
     put:
+      security:
+        - oAuth2Authorizer:
+            - admin
       tags:
         - Books
       summary: Create or update a list of books
@@ -198,6 +201,9 @@ paths:
         500:
           $ref: '#/components/responses/500'
     put:
+      security:
+        - oAuth2Authorizer:
+            - admin
       tags:
         - Authors
       summary: create or modify an author
