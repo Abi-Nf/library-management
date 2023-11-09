@@ -149,7 +149,7 @@ paths:
       operationId: ImportBooks
       requestBody:
         content:
-          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+          application/vnd.google-apps.spreadsheet:
             schema:
               $ref: '#/components/schemas/ImportBook'
           application/json:
@@ -282,7 +282,7 @@ paths:
       operationId: ImportAuthors
       requestBody:
         content:
-          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:  # Pour Excel
+          application/vnd.google-apps.spreadsheet:
             schema:
               $ref: '#/components/schemas/ImportAuthors'
           application/json:
