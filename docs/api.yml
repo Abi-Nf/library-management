@@ -353,6 +353,31 @@ paths:
           $ref: '#/components/responses/403'
         500:
           $ref: '#/components/responses/500'
+
+    delete:
+      tags:
+        - Guests
+      summary: Delete a guest by ID
+      operationId: deleteGuestById
+      parameters:
+        - name: guestId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: return the deleted guest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guest'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
 components:
   securitySchemes:
     oAuth2Authorizer:
