@@ -590,28 +590,34 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/StatusMessage'
+            $ref: '#/components/schemas/TemplateResponseBody'
           example:
-            type: error
-            message: Bad request
+            status:
+              code: 400
+              message: Bad request
+            body: {}
     403:
       description: Forbidden
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/StatusMessage'
+            $ref: '#/components/schemas/TemplateResponseBody'
           example:
-            type: error
-            message: Forbidden
+            status:
+              code: 403
+              message: Forbidden
+            body: {}
     500:
       description: Internal server error
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/StatusMessage'
+            $ref: '#/components/schemas/TemplateResponseBody'
           example:
-            type: error
-            message: Internal server error
+            status:
+              code: 500
+              message: Internal server error
+            body: {}
   schemas:
     Author:
       type: object
