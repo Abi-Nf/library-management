@@ -198,11 +198,7 @@ paths:
               $ref: '#/components/schemas/Author'
       responses:
         200:
-          description: return the modified author
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Author'
+          $ref: '#/components/responses/ReturnAuthor'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -227,13 +223,7 @@ paths:
         - $ref: '#/components/parameters/pathPaginationSize'
       responses:
         200:
-          description: all filtered authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Author'
+          $ref: '#/components/responses/ReturnListOfAuthors'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -257,11 +247,7 @@ paths:
             type: integer
       responses:
         200:
-          description: return the deleted author
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Author'
+          $ref: '#/components/responses/ReturnAuthor'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -287,13 +273,7 @@ paths:
               $ref: '#/components/schemas/ImportAuthors'
       responses:
         200:
-          description: List of imported authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Author'
+          $ref: '#/components/responses/ReturnListOfAuthors'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -558,6 +538,20 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Author'
+    ReturnAuthor:
+      description: return only one author
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/TemplateResponseBody'
+            properties:
+              status:
+                example:
+                  code: 200
+                  message: OK
+              body:
+                $ref: '#/components/schemas/Author'
     400:
       description: Bad request
       content:
