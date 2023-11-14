@@ -391,13 +391,7 @@ paths:
       operationId: getGuests
       responses:
         200:
-          description: return list of guest
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Guest'
+          $ref: '#/components/responses/ReturnGuestList'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -558,6 +552,22 @@ components:
                   message: OK
               body:
                 $ref: '#/components/schemas/Guest'
+    ReturnGuestList:
+      description: return list of guests
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/TemplateResponseBody'
+            properties:
+              status:
+                example:
+                  code: 200
+                  message: OK
+              body:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Guest'
     400:
       description: Bad request
       content:
