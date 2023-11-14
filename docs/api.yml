@@ -37,13 +37,7 @@ paths:
         - $ref: '#/components/parameters/queryPagination'
       responses:
         200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Book'
+          $ref: '#/components/responses/ReturnListOfBooks'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -67,7 +61,7 @@ paths:
                 $ref: '#/components/schemas/CrupdateBook'
       responses:
         200:
-          $ref: '#/components/responses/ReturnOneBook'
+          $ref: '#/components/responses/ReturnListOfBooks'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -127,13 +121,7 @@ paths:
                     type: integer
       responses:
         200:
-          description: return the list of updated books and their authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Book'
+          $ref: '#/components/responses/ReturnListOfBooks'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -159,13 +147,13 @@ paths:
               $ref: '#/components/schemas/ImportBook'
       responses:
         200:
-          description: List of imported books
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Book'
+          $ref: '#/components/responses/ReturnListOfBooks'
+        400:
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
   /authors:
     post:
       tags:
@@ -323,66 +311,37 @@ paths:
         500:
           $ref: '#/components/responses/500'
 
-  /books/borrow:
+  /book/action:
     post:
       tags:
         - Action
       security:
         - oAuth2Authorizer:
             - admin
-      operationId: BorrowBooks
+      operationId: BookActions
       requestBody:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                type: integer
+              properties: 
+                type:
+                  enum:
+                    - Borrow
+                    - Return
+                booksId:
+                  type: array
+                  items:
+                    type: integer
       responses:
         200:
-          description: return the borrowed books
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/BorrowBook'
+          $ref: '#/components/responses/ReturnListOfBooks'
         400:
           $ref: '#/components/responses/400'
         403:
           $ref: '#/components/responses/403'
         500:
           $ref: '#/components/responses/500'
-  /books/return:
-    post:
-      tags:
-        - Action
-      security:
-        - oAuth2Authorizer:
-            - admin
-      operationId: ReturnBooks
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: integer
-      responses:
-        200:
-          description: return the returned books
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Book'
-        400:
-          $ref: '#/components/responses/400'
-        403:
-          $ref: '#/components/responses/403'
-        500:
-          $ref: '#/components/responses/500'
+
   /books/availables:
     get:
       tags:
@@ -391,13 +350,7 @@ paths:
       operationId: GetAvailableBooks
       responses:
         200:
-          description: return a list of available books
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Book'
+          $ref: '#/components/responses/ReturnListOfBooks'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -589,6 +542,22 @@ components:
                   message: OK
               body:
                 $ref: '#/components/schemas/Book'
+    ReturnListOfBooks:
+      description: return list of books
+      content: 
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/TemplateResponseBody'
+            properties: 
+              status:
+                example: 
+                  code: 200
+                  message: OK
+              body:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Book'
     400:
       description: Bad request
       content:
