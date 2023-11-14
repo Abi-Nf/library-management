@@ -405,13 +405,7 @@ paths:
             type: integer
       responses:
         200:
-          description: return all returned books of a specific guest
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Book'
+          $ref: '#/components/responses/ReturnListOfBooks'
         400:
           $ref: '#/components/responses/400'
         403:
