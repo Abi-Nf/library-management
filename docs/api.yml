@@ -417,11 +417,7 @@ paths:
               $ref: '#/components/schemas/Guest'
       responses:
         200:
-          description: return updated or created guest
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Guest'
+          $ref: '#/components/responses/ReturnGuest'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -441,11 +437,7 @@ paths:
             type: integer
       responses:
         200:
-          description: return the deleted guest
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Guest'
+          $ref: '#/components/responses/ReturnGuest'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -552,6 +544,20 @@ components:
                   message: OK
               body:
                 $ref: '#/components/schemas/Author'
+    ReturnGuest:
+      description: return one guest
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/TemplateResponseBody'
+            properties:
+              status:
+                example:
+                  code: 200
+                  message: OK
+              body:
+                $ref: '#/components/schemas/Guest'
     400:
       description: Bad request
       content:
