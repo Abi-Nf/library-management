@@ -67,13 +67,7 @@ paths:
                 $ref: '#/components/schemas/CrupdateBook'
       responses:
         200:
-          description: The list of created or updated books
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Book'
+          $ref: '#/components/responses/ReturnOneBook'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -103,11 +97,7 @@ paths:
             type: integer
       responses:
         200:
-          description: return the updated book data including the author
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Book'
+          $ref: '#/components/responses/ReturnOneBook'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -585,6 +575,20 @@ components:
         type: integer
         default: 50
   responses:
+    ReturnOneBook:
+      description: return only one book
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/TemplateResponseBody'
+            properties:
+              status:
+                example:
+                  code: 200
+                  message: OK
+              body:
+                $ref: '#/components/schemas/Book'
     400:
       description: Bad request
       content:
