@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Library API
   version: 1.5.0
-  description: STD22078 and STD22082
+  description: STD22078
 servers:
   - url: https://library.com
 paths:
@@ -653,10 +653,16 @@ components:
     StatusMessage:
       type: object
       properties:
-        type:
-          type: string
+        code:
+          type: integer
         message:
           type: string
+    TemplateResponseBody:
+      properties:
+        status:
+          $ref: '#/components/schemas/StatusMessage'
+        body:
+          type: object
     ImportBook:
       type: array
       items:
