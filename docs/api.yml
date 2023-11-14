@@ -174,13 +174,7 @@ paths:
                 type: integer
       responses:
         200:
-          description: return a list of the removed authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Author'
+          $ref: '#/components/responses/ReturnListOfAuthors'
         400:
           $ref: '#/components/responses/400'
         403:
@@ -548,6 +542,22 @@ components:
                 type: array
                 items: 
                   $ref: '#/components/schemas/Book'
+    ReturnListOfAuthors:
+      description: return list of authors
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/TemplateResponseBody'
+            properties:
+              status:
+                example:
+                  code: 200
+                  message: OK
+              body:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
     400:
       description: Bad request
       content:
